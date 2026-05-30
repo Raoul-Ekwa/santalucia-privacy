@@ -101,6 +101,7 @@
       padding: 3px 10px;
       border-radius: 20px;
       margin-bottom: 10px;
+      margin-top: 8px;
     }
 
     .contact-box {
@@ -116,6 +117,20 @@
       color: #333;
     }
 
+    .warning-box {
+      background: #FFF3CD;
+      border-left: 4px solid #F59E0B;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-top: 12px;
+    }
+
+    .warning-box p {
+      color: #7D5A0A;
+      margin: 0;
+      font-size: 14px;
+    }
+
     footer {
       text-align: center;
       padding: 24px;
@@ -129,7 +144,7 @@
 <header>
   <h1>Politique de Confidentialité</h1>
   <p>Application mobile — Complexe Santa Lucia</p>
-  <p style="margin-top:8px; font-size:13px;">Dernière mise à jour : mars 2026</p>
+  <p style="margin-top:8px; font-size:13px;">Dernière mise à jour : mai 2026</p>
 </header>
 
 <main>
@@ -138,9 +153,13 @@
     <h2><span class="num">1</span> Introduction</h2>
     <p>
       Complexe Santa Lucia ("nous", "notre") s'engage à protéger la vie privée
-      des utilisateurs de notre application mobile de fidélité. Cette politique
-      explique quelles données nous collectons, comment nous les utilisons et
-      quels sont vos droits.
+      des utilisateurs de notre application mobile de fidélité <strong>mySantaLucia</strong>.
+      Cette politique explique quelles données nous collectons, pourquoi nous les
+      collectons, comment nous les utilisons et quels sont vos droits.
+    </p>
+    <p>
+      En utilisant notre application, vous acceptez les pratiques décrites dans
+      cette politique.
     </p>
   </section>
 
@@ -154,6 +173,7 @@
       <li>Adresse e-mail</li>
       <li>Ville et pays de résidence</li>
       <li>Photo de profil (optionnelle)</li>
+      <li>Mot de passe (stocké chiffré, jamais transmis en clair)</li>
     </ul>
 
     <span class="tag">Générées par l'utilisation</span>
@@ -164,10 +184,36 @@
       <li>Notifications lues / non lues</li>
     </ul>
 
-    <span class="tag">Données techniques</span>
+    <span class="tag">Données techniques automatiques</span>
     <ul>
       <li>Type d'appareil et version du système d'exploitation</li>
-      <li>Identifiant unique pour les notifications push</li>
+      <li>Jeton FCM (identifiant pour les notifications push Firebase)</li>
+      <li>Données de diagnostic et de crash (via Firebase Crashlytics)</li>
+      <li>Identifiant appareil anonymisé (détection connexion nouvel appareil)</li>
+    </ul>
+
+    <span class="tag">Données de localisation</span>
+    <ul>
+      <li>Position GPS approximative — uniquement lorsque l'application est en
+          cours d'utilisation, pour afficher les agences Santa Lucia les plus
+          proches de vous. Cette donnée n'est pas stockée sur nos serveurs.</li>
+    </ul>
+
+    <span class="tag">Accès caméra et galerie</span>
+    <ul>
+      <li><strong>Caméra</strong> : utilisée pour scanner des QR codes et prendre
+          une photo de profil. Accès demandé uniquement au moment de l'action.</li>
+      <li><strong>Galerie photo</strong> : utilisée pour sélectionner une photo
+          de profil depuis vos images existantes.</li>
+      <li><strong>Microphone</strong> : accès réservé aux fonctionnalités vidéo
+          intégrées. Non activé par défaut.</li>
+    </ul>
+
+    <span class="tag">Biométrie (iOS uniquement)</span>
+    <ul>
+      <li>Face ID peut être utilisé pour sécuriser l'accès à vos identifiants
+          de connexion. Les données biométriques restent sur votre appareil et
+          ne sont jamais transmises.</li>
     </ul>
   </section>
 
@@ -175,10 +221,11 @@
     <h2><span class="num">3</span> Utilisation des données</h2>
     <p>Vos données sont utilisées pour :</p>
     <ul>
-      <li>Gérer votre compte de fidélité</li>
-      <li>Afficher votre solde de points et votre badge</li>
-      <li>Vous envoyer des notifications et promotions personnalisées</li>
-      <li>Améliorer nos produits et services</li>
+      <li>Gérer votre compte de fidélité et afficher votre solde de points</li>
+      <li>Vous envoyer des notifications push et des SMS promotionnels</li>
+      <li>Détecter une connexion depuis un nouvel appareil et vous alerter par SMS</li>
+      <li>Améliorer la stabilité de l'application (données de crash anonymisées)</li>
+      <li>Vous localiser les agences Santa Lucia les plus proches</li>
       <li>Répondre à vos demandes de support</li>
     </ul>
   </section>
@@ -189,56 +236,118 @@
       Nous ne vendons, ni ne louons, ni ne partageons vos données personnelles
       avec des tiers à des fins commerciales.
     </p>
-    <p>Des données peuvent être partagées uniquement dans ces cas :</p>
+    <p>Vos données peuvent être partagées uniquement avec :</p>
     <ul>
-      <li>Prestataires techniques hébergeant nos serveurs (sous contrat de confidentialité)</li>
-      <li>Obligation légale ou réglementaire</li>
+      <li>
+        <strong>Google Firebase</strong> (Firebase Crashlytics, Firebase Cloud Messaging) —
+        pour les notifications push et le suivi des erreurs. Politique de confidentialité
+        Google : <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>
+      </li>
+      <li>
+        <strong>Prestataire SMS</strong> (serveur-free.com) — pour l'envoi de SMS
+        transactionnels (alerte nouvel appareil, récapitulatif de points). Seul votre
+        numéro de téléphone est transmis pour la livraison du message.
+      </li>
+      <li>
+        <strong>Hébergeur serveur</strong> — nos serveurs applicatifs hébergent
+        vos données sous contrat de confidentialité.
+      </li>
+      <li>
+        <strong>Obligation légale</strong> — si requis par la loi ou une autorité
+        compétente.
+      </li>
     </ul>
   </section>
 
   <section>
     <h2><span class="num">5</span> Sécurité</h2>
-    <p>
-      Toutes les communications entre l'application et nos serveurs sont
-      chiffrées via HTTPS. Vos données sont stockées sur des serveurs sécurisés
-      avec accès restreint au personnel autorisé. Les identifiants sont stockés
-      de manière sécurisée sur votre appareil (Keychain iOS / Keystore Android).
-    </p>
+    <ul>
+      <li>Toutes les communications entre l'application et nos serveurs sont
+          chiffrées via <strong>HTTPS/TLS</strong>.</li>
+      <li>Vos données sont stockées sur des serveurs sécurisés avec accès
+          restreint au personnel autorisé.</li>
+      <li>Vos identifiants de connexion sont stockés localement de manière
+          sécurisée (Keychain iOS / Keystore Android).</li>
+      <li>Les mots de passe sont hachés côté serveur et jamais stockés en clair.</li>
+      <li>Un système de limitation des tentatives de connexion protège votre
+          compte contre les accès non autorisés.</li>
+    </ul>
   </section>
 
   <section>
     <h2><span class="num">6</span> Conservation des données</h2>
     <p>
       Vos données sont conservées aussi longtemps que votre compte est actif.
-      En cas de suppression de compte, vos données personnelles sont effacées
-      dans un délai de 30 jours.
+      En cas de suppression de compte (voir section 7), vos données personnelles
+      sont effacées dans un délai de <strong>30 jours</strong>.
+    </p>
+    <p>
+      Les données de crash anonymisées (Firebase Crashlytics) sont conservées
+      90 jours conformément à la politique de Google.
     </p>
   </section>
 
   <section>
-    <h2><span class="num">7</span> Vos droits</h2>
-    <p>Conformément aux lois applicables sur la protection des données, vous avez le droit de :</p>
-    <ul>
-      <li><strong>Accéder</strong> à vos données personnelles</li>
-      <li><strong>Rectifier</strong> des informations inexactes</li>
-      <li><strong>Supprimer</strong> votre compte et vos données</li>
-      <li><strong>Vous opposer</strong> au traitement de vos données</li>
-      <li><strong>Exporter</strong> vos données (portabilité)</li>
-    </ul>
-    <p>Pour exercer ces droits, contactez-nous via les coordonnées ci-dessous.</p>
+    <h2><span class="num">7</span> Suppression de compte</h2>
+    <p>
+      Vous pouvez demander la suppression de votre compte et de toutes vos
+      données personnelles directement depuis l'application :
+    </p>
+    <ol style="padding-left:20px; margin-bottom:12px;">
+      <li style="font-size:15px; color:#444; margin-bottom:6px;">
+        Ouvrez l'onglet <strong>Plus</strong> (icône ☰ en bas de l'écran)
+      </li>
+      <li style="font-size:15px; color:#444; margin-bottom:6px;">
+        Faites défiler jusqu'en bas
+      </li>
+      <li style="font-size:15px; color:#444; margin-bottom:6px;">
+        Appuyez sur <strong>Supprimer mon compte</strong>
+      </li>
+      <li style="font-size:15px; color:#444; margin-bottom:6px;">
+        Confirmez la suppression dans la fenêtre de confirmation
+      </li>
+    </ol>
+    <div class="warning-box">
+      <p>⚠️ Cette action est <strong>irréversible</strong>. Toutes vos données
+      (points, historique d'achats, profil) seront définitivement supprimées.</p>
+    </div>
+    <p style="margin-top:12px;">
+      Vous pouvez également envoyer une demande de suppression par e-mail à
+      <a href="mailto:info@complexesantalucia.com">info@complexesantalucia.com</a>
+      en précisant votre numéro de client.
+    </p>
   </section>
 
   <section>
-    <h2><span class="num">8</span> Stockage local</h2>
+    <h2><span class="num">8</span> Vos droits</h2>
+    <p>Conformément aux lois applicables sur la protection des données, vous avez le droit de :</p>
+    <ul>
+      <li><strong>Accéder</strong> à vos données personnelles</li>
+      <li><strong>Rectifier</strong> des informations inexactes (via l'écran Modifier le profil)</li>
+      <li><strong>Supprimer</strong> votre compte et vos données (voir section 7)</li>
+      <li><strong>Vous opposer</strong> au traitement de vos données</li>
+      <li><strong>Exporter</strong> vos données (portabilité)</li>
+      <li><strong>Retirer votre consentement</strong> à tout moment pour les
+          communications marketing (SMS, notifications)</li>
+    </ul>
+    <p>Pour exercer ces droits, contactez-nous à l'adresse indiquée en section 10.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">9</span> Stockage local</h2>
     <p>
       L'application utilise le stockage local de votre appareil (AsyncStorage)
       uniquement pour le cache des données et maintenir votre session de
       connexion. Aucun cookie tiers n'est utilisé.
     </p>
+    <p>
+      Les permissions d'accès (caméra, galerie, localisation, microphone) peuvent
+      être révoquées à tout moment depuis les paramètres de votre appareil.
+    </p>
   </section>
 
   <section>
-    <h2><span class="num">9</span> Modifications</h2>
+    <h2><span class="num">10</span> Modifications</h2>
     <p>
       Nous pouvons mettre à jour cette politique à tout moment. La date de
       dernière mise à jour sera toujours indiquée en haut de cette page.
@@ -247,11 +356,12 @@
   </section>
 
   <section>
-    <h2><span class="num">10</span> Contact</h2>
+    <h2><span class="num">11</span> Contact</h2>
     <div class="contact-box">
       <p>📍 Complexe Santa Lucia — Douala, Cameroun</p>
       <p>📞 +237 674 676 782</p>
       <p>📞 +237 659 733 535</p>
+      <p>✉️ <a href="mailto:info@complexesantalucia.com" style="color:#C2185B;">info@complexesantalucia.com</a></p>
     </div>
   </section>
 
